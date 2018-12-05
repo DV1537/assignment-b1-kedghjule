@@ -6,7 +6,7 @@
 #define TRIANGLE_H
 
 
-class Triangle: virtual Shape{
+class Triangle: public Shape{
     public:
         Triangle();
         Triangle(Point* pnts, int count);

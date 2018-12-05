@@ -76,8 +76,19 @@ int main(int argc, const char * argv[])
         Polygon tp1 = p1 + Point(23,23);
         Polygon tp2 = p1 + p2;
         
-        Figure f;
+        Figure f = Figure();
+
+
+
+        Shape** foo = new Shape*[100];
+        
+        foo[0] = &tp1;
+        foo[1] = &tp2;
+
+
         f.addShape(tp1);
+
+
 
         cout << "Area: " << tp2.area() << endl;
         cout << tp2 << endl;

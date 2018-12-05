@@ -6,7 +6,7 @@
 #define POLYGON_H
 
 
-class Polygon: virtual Shape{
+class Polygon: public Shape{
     public:
         Polygon();
         Polygon(Point* pnts, int count);

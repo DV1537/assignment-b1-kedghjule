@@ -6,7 +6,7 @@
 #define LINE_H
 
 
-class Line: virtual Shape{
+class Line: public Shape{
     public:
         Line(Point* pnts, int count);
         Line(Point p1, Point p2);

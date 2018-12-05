@@ -7,8 +7,8 @@
 
 class Figure{
     public:
-        Figure();
-        void addShape(Shape s);
+        Figure(){}
+        void addShape(Shape const &s);
         
     private:
         int n;

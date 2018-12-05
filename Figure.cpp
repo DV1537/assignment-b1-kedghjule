@@ -1,7 +1,7 @@
 #include "Figure.h"
 #include "Shape.h"
 
-void Figure::addShape(Shape s){
+void Figure::addShape(Shape const &s){
 
 }
 
