@@ -112,3 +112,11 @@ Point Triangle::position(){
     r = Point(cXS / p, cYS / p);
     return r;
 }
+
+Point* Triangle::getPoints(){
+    return this->points;
+}
+
+int Triangle::getCount(){
+    return this->p;
+}

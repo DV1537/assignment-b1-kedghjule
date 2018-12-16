@@ -15,6 +15,9 @@ class Line: public Shape{
         bool isConvex();
         double circumference();
         Point position();
+
+        Point* getPoints();
+        int getCount();
     private:
         int p;
         Point* points;

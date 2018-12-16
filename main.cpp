@@ -9,10 +9,12 @@
 #include "Line.h"
 #include "Polygon.h"
 #include "Figure.h"
+#include "Bound.h"
 
 using namespace std;
 
 Point* addToArray(Point* array, int bufferSize, Point value);
+Shape** addToArray(Shape** array, int bufferSize, Shape* value);
 
 int main(int argc, const char * argv[])
 {
@@ -20,6 +22,10 @@ int main(int argc, const char * argv[])
     int c = 1; //Sub buffer in-time count
     int p = 0; //Sub buffer count
     int s = 0; //Total buffer count
+
+    double iX = 0;
+    double iY = 0;
+
     const int numberOfShapes = 2; //Number of shapes to load
 
 	Polygon* newShape = new Polygon[numberOfShapes];
@@ -68,39 +74,19 @@ int main(int argc, const char * argv[])
         Polygon p1 = newShape[0];
         Polygon p2 = newShape[1];
 
-
         //Usage of classes and testing
-        
-        
-        
-        Polygon tp1 = p1 + Point(23,23);
-        Polygon tp2 = p1 + p2;
-        
-        Figure f = Figure();
 
+        Figure f1 = Figure();
 
+        f1.addShape(&p1);
+        f1.addShape(&p2);
 
-        Shape** foo = new Shape*[100];
-        
-        foo[0] = &tp1;
-        foo[1] = &tp2;
-
-
-        f.addShape(tp1);
-
-
-
-        cout << "Area: " << tp2.area() << endl;
-        cout << tp2 << endl;
-
-
+        cout << f1.getBoundingBox() << endl;
 
         //Clean up memory
         delete[] newShape;
     }
-
     return 0;
-
 }
 
 Point* addToArray(Point* array, int bufferSize, Point value){
@@ -114,7 +100,8 @@ Point* addToArray(Point* array, int bufferSize, Point value){
             buffer[i] = array[i];
         }
         buffer[bufferSize] = value;
-        
+        delete[] array;
         return buffer;
     }
 }
+

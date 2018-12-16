@@ -46,3 +46,11 @@ Point Line::position(){
     r = Point(cXS / p, cYS / p); 
     return r;
 }
+
+Point* Line::getPoints(){
+    return this->points;
+}
+
+int Line::getCount(){
+    return this->p;
+}

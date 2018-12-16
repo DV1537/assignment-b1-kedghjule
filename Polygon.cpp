@@ -14,6 +14,10 @@ std::string Polygon::getType(){
     return "Polygon";
 }
 
+Polygon::~Polygon(){
+    delete[] points;
+}
+
 double Polygon::area(){
     double a;
     if((!isConvex()) || (p < 3)){
@@ -138,6 +142,22 @@ Point Polygon::position(){
 	}
     r = Point(cXS / p, cYS / p); 
     return r;
+}
+
+Point* Polygon::getPoints(){
+    return this->points;
+}
+
+int Polygon::getCount(){
+    return this->p;
+}
+
+void Polygon::operator=(const Polygon &rhs)
+{
+    p = rhs.p;
+    points = new Point[rhs.p];
+    for (int k = 0; k < rhs.p; k++)
+        points[k] = rhs.points[k];
 }
 
 Polygon operator+(Polygon a, Polygon b){
