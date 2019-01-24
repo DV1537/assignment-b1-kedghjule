@@ -26,11 +26,9 @@ int main(int argc, const char * argv[])
     double iX = 0;
     double iY = 0;
 
-    const int numberOfShapes = 2; //Number of shapes to load
-
-	Polygon* newShape = new Polygon[numberOfShapes];
-
     Point cPnt;
+
+    Figure f1 = Figure();
 
     ifstream myReadFile;
     myReadFile.open(argv[1]);
@@ -65,26 +63,17 @@ int main(int argc, const char * argv[])
 		        c++;
             }
 
-            Polygon thisShape = Polygon(subBuffer, p);
-            newShape[s] = thisShape;
+            Polygon* thisShape = new Polygon(subBuffer, p);
+            f1.addShape(thisShape);
             s++;
         }    
         myReadFile.close();
 
-        Polygon p1 = newShape[0];
-        Polygon p2 = newShape[1];
-
-        //Usage of classes and testing
-
-        Figure f1 = Figure();
-
-        f1.addShape(&p1);
-        f1.addShape(&p2);
-
+        
         cout << f1.getBoundingBox() << endl;
 
         //Clean up memory
-        delete[] newShape;
+        
     }
     return 0;
 }

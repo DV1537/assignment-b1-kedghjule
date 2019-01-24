@@ -3,8 +3,24 @@
 #include "Shape.h"
 #include "Bound.h"
 
+Figure::~Figure(){
+    for(int i = 0; i < n; i++){
+        delete shapes[i];
+    }
+}
+
 void Figure::addShape(Shape* s){
-    shapes = addToArray(shapes, n, s);
+    Shape** tmp = new Shape*[n+1];
+
+    for(int i = 0; i < n; i++){
+        tmp[i] = nullptr;
+        tmp[i] = shapes[i];
+    }
+    tmp[n] = s;
+
+    shapes = nullptr;
+    shapes = tmp;
+
     n++;
 }
 
@@ -51,20 +67,4 @@ Bound Figure::getBoundingBox(){
     yB = shapes[iYBS]->getPoints()[iYBP].getY();
     Bound b = Bound(Point(xL, yT), Point(xR, yB));
     return b;
-}
-
-Shape** Figure::addToArray(Shape** array, int bufferSize, Shape* value){
-    if(array == nullptr){
-        //If array is empty, create first slot and add the value
-        return new Shape*[1] {value};
-    }else{
-        Shape** buffer = new Shape*[bufferSize + 1];
-        
-        for(int i = 0; i < bufferSize; i++){
-            buffer[i] = array[i];
-        }
-        buffer[bufferSize] = value;
-        
-        return buffer;
-    }
 }

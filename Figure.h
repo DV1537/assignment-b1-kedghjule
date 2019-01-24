@@ -9,12 +9,12 @@
 class Figure{
     public:
         Figure(){}
+        ~Figure();
         void addShape(Shape* s);
         Bound getBoundingBox();
     private:
         int n;
         Shape** shapes;
-        Shape** addToArray(Shape** array, int bufferSize, Shape* value); //Dynamic array manager
 };
 
 #endif
